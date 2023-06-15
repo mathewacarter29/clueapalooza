@@ -25,7 +25,17 @@ function Hunt({ route, navigation }) {
         renderItem={({ item }) => {
           return (
             <Card>
-              <Text style={theme.textVariant.regular}>{item.title}</Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("Question", {
+                    title: item.title,
+                    hints: item.hints,
+                    answer: item.answer,
+                  })
+                }
+              >
+                <Text style={theme.textVariant.regular}>{item.title}</Text>
+              </TouchableOpacity>
             </Card>
           );
         }}

@@ -14,6 +14,7 @@ export const theme = {
     header: {
       fontSize: 36,
       fontFamily: "Ubuntu_Bold",
+      textAlign: "center",
     },
     regular: {
       fontSize: 26,
