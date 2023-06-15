@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, Text, FlatList } from "react-native";
+import { View, Image, Text, FlatList, TouchableOpacity } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 import { theme } from "../theme";
 import DATA from "../test_data";
@@ -21,7 +21,10 @@ function Home() {
         renderItem={({ item }) => {
           return (
             <Card>
-              <View style={styles.cardContainer}>
+              <TouchableOpacity
+                style={styles.cardContainer}
+                onPress={() => console.log("clicked")}
+              >
                 <Image
                   source={require("../assets/logo_notext.png")}
                   style={{ width: 100, height: 100 }}
@@ -34,7 +37,7 @@ function Home() {
                     Status: In progress
                   </Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             </Card>
           );
         }}
