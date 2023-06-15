@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Home from "./screens/Home";
+import Hunt from "./screens/Hunt";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import EStyleSheet from "react-native-extended-stylesheet";
@@ -19,18 +20,11 @@ export default function App() {
 
   See following for reference: https://docs.expo.dev/versions/latest/sdk/font/
   */
-  SplashScreen.preventAutoHideAsync();
 
   const [fontsLoaded] = useFonts({
     Ubuntu_Bold: require("./assets/fonts/Ubuntu-Bold.ttf"),
     Ubuntu: require("./assets/fonts/Ubuntu-Regular.ttf"),
   });
-
-  useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
 
   if (!fontsLoaded) {
     return null;
@@ -40,6 +34,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Hunt" component={Hunt} />
       </Stack.Navigator>
     </NavigationContainer>
   );

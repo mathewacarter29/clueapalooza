@@ -5,7 +5,7 @@ import { theme } from "../theme";
 import DATA from "../test_data";
 import Card from "../common/Card";
 
-function Home() {
+function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -23,7 +23,12 @@ function Home() {
             <Card>
               <TouchableOpacity
                 style={styles.cardContainer}
-                onPress={() => console.log("clicked")}
+                onPress={() =>
+                  navigation.navigate("Hunt", {
+                    questions: item.questions,
+                    title: item.title,
+                  })
+                }
               >
                 <Image
                   source={require("../assets/logo_notext.png")}

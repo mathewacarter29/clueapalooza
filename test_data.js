@@ -104,6 +104,39 @@ export default {
             { hint: "Hint numba 3 babyyyy" },
           ],
         },
+        {
+          title: "Question 9: I'll make it simple for you",
+          answer: "The answer is: poooooooooop",
+          hints: [
+            { hint: "This is the first hint" },
+            {
+              hint: "This is going to be a really long hint. I want to see what happens when the hint is really long. I'm hoping this is long enough, even though it probably won't be. The screen should scroll if this text pops up, which I'm hoping it does. Jeez how long does this thing have to be? Oh, are we done now? Okay, cool.",
+            },
+            { hint: "Hint numba 3 babyyyy" },
+          ],
+        },
+        {
+          title: "Question 9: I'll make it simple for you",
+          answer: "The answer is: poooooooooop",
+          hints: [
+            { hint: "This is the first hint" },
+            {
+              hint: "This is going to be a really long hint. I want to see what happens when the hint is really long. I'm hoping this is long enough, even though it probably won't be. The screen should scroll if this text pops up, which I'm hoping it does. Jeez how long does this thing have to be? Oh, are we done now? Okay, cool.",
+            },
+            { hint: "Hint numba 3 babyyyy" },
+          ],
+        },
+        {
+          title: "Question 9: I'll make it simple for you",
+          answer: "The answer is: poooooooooop",
+          hints: [
+            { hint: "This is the first hint" },
+            {
+              hint: "This is going to be a really long hint. I want to see what happens when the hint is really long. I'm hoping this is long enough, even though it probably won't be. The screen should scroll if this text pops up, which I'm hoping it does. Jeez how long does this thing have to be? Oh, are we done now? Okay, cool.",
+            },
+            { hint: "Hint numba 3 babyyyy" },
+          ],
+        },
       ],
     },
     {
