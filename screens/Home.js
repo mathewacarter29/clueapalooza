@@ -1,10 +1,12 @@
 import React from "react";
-import { View, Image } from "react-native";
-import Text from "../common/Text";
+import { View, Image, Text, FlatList } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 import { theme } from "../theme";
+import DATA from "../test_data";
+import Card from "../common/Card";
 
 function Home() {
+  console.log(DATA);
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -15,6 +17,17 @@ function Home() {
         <Text style={theme.textVariant.header}>Clue-a-Palooza</Text>
       </View>
       <Text style={theme.textVariant.header}>Ongoing Hunts</Text>
+      <FlatList
+        data={DATA.HUNTS}
+        renderItem={({ item }) => {
+          console.log(item);
+          return (
+            <Card>
+              <Text>{item.title}</Text>
+            </Card>
+          );
+        }}
+      />
     </View>
   );
 }

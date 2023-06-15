@@ -13,7 +13,7 @@ export const theme = {
   textVariant: {
     header: {
       fontSize: 36,
-      fontWeight: "bold",
+      fontFamily: "Ubuntu_Bold",
     },
   },
 };
