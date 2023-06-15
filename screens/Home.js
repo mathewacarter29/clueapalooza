@@ -6,7 +6,6 @@ import DATA from "../test_data";
 import Card from "../common/Card";
 
 function Home() {
-  console.log(DATA);
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -20,10 +19,22 @@ function Home() {
       <FlatList
         data={DATA.HUNTS}
         renderItem={({ item }) => {
-          console.log(item);
           return (
             <Card>
-              <Text>{item.title}</Text>
+              <View style={styles.cardContainer}>
+                <Image
+                  source={require("../assets/logo_notext.png")}
+                  style={{ width: 100, height: 100 }}
+                />
+                <View style={{ marginTop: 20 }}>
+                  <Text style={[theme.textVariant.regular, styles.text]}>
+                    {item.title}
+                  </Text>
+                  <Text style={[theme.textVariant.description, styles.text]}>
+                    Status: In progress
+                  </Text>
+                </View>
+              </View>
             </Card>
           );
         }}
@@ -47,6 +58,15 @@ const styles = EStyleSheet.create({
   logo: {
     height: 150,
     width: 150,
+  },
+  cardContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "60%",
+  },
+  text: {
+    marginTop: 10,
+    textAlign: "center",
   },
 });
 

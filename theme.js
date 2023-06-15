@@ -15,5 +15,13 @@ export const theme = {
       fontSize: 36,
       fontFamily: "Ubuntu_Bold",
     },
+    regular: {
+      fontSize: 26,
+      fontFamily: "Ubuntu",
+    },
+    description: {
+      fontSize: 20,
+      fontFamily: "Ubuntu",
+    },
   },
 };

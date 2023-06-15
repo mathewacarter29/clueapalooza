@@ -23,6 +23,7 @@ export default function App() {
 
   const [fontsLoaded] = useFonts({
     Ubuntu_Bold: require("./assets/fonts/Ubuntu-Bold.ttf"),
+    Ubuntu: require("./assets/fonts/Ubuntu-Regular.ttf"),
   });
 
   useCallback(async () => {
