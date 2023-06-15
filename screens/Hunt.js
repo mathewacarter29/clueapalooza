@@ -8,12 +8,15 @@ function Hunt({ route, navigation }) {
   const { questions, title } = route.params;
   return (
     <View style={styles.container}>
-      <Icon.Button
-        name="arrow-left"
-        backgroundColor={"#EAEAEA"}
-        color={"black"}
-        size={50}
-      />
+      <View>
+        <Icon
+          name="arrow-left"
+          backgroundColor={"#EAEAEA"}
+          color={"black"}
+          size={50}
+          onPress={() => navigation.goBack()}
+        />
+      </View>
       <Text style={[theme.textVariant.header, { textAlign: "center" }]}>
         {title}
       </Text>
