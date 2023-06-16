@@ -3,12 +3,24 @@ import EStyleSheet from "react-native-extended-stylesheet";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { theme } from "../theme";
 import Card from "../common/Card";
+import { useState } from "react";
+import Modal from "../common/Modal";
 
 function Question({ route, navigation }) {
   const { title, hints, answer } = route.params;
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalText, setModalText] = useState("");
+
   const listItems = hints.map((hint, index) => (
     <Card>
-      <TouchableOpacity onPress={() => console.log(hint.hint)}>
+      <TouchableOpacity
+        onPress={() => {
+          setShowModal(true);
+          setModalTitle(`Hint ${index + 1}`);
+          setModalText(hint.hint);
+        }}
+      >
         <Text
           style={[theme.textVariant.regular, { textAlign: "center" }]}
         >{`Hint ${index + 1}`}</Text>
@@ -17,7 +29,13 @@ function Question({ route, navigation }) {
   ));
   const answerCard = (
     <Card highlight>
-      <TouchableOpacity onPress={() => console.log(answer)}>
+      <TouchableOpacity
+        onPress={() => {
+          setShowModal(true);
+          setModalTitle(`Answer`);
+          setModalText(answer);
+        }}
+      >
         <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
           See Answer
         </Text>
@@ -27,7 +45,19 @@ function Question({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <View>
+      {showModal && (
+        <Modal setVisible={setShowModal}>
+          <View>
+            <Text style={[theme.textVariant.header, styles.modalTitle]}>
+              {modalTitle}
+            </Text>
+            <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
+              {modalText}
+            </Text>
+          </View>
+        </Modal>
+      )}
+      <View style={styles.backButton}>
         <Icon
           name="arrow-left"
           backgroundColor={"#EAEAEA"}
@@ -52,7 +82,12 @@ const styles = EStyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.colors.background,
-    paddingTop: "2rem",
+  },
+  backButton: {
+    marginTop: "2rem",
+  },
+  modalTitle: {
+    margin: "1rem",
   },
 });
 
