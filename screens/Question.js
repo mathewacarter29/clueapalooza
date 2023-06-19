@@ -46,22 +46,16 @@ function Question({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      {showModal && (
+      <Modal hideModal={() => setShowModal(false)} visible={showModal}>
         <View>
-          <Modal setVisible={setShowModal} visible={showModal}>
-            <View>
-              <Text style={[theme.textVariant.header, styles.modalTitle]}>
-                {modalTitle}
-              </Text>
-              <Text
-                style={[theme.textVariant.regular, { textAlign: "center" }]}
-              >
-                {modalText}
-              </Text>
-            </View>
-          </Modal>
+          <Text style={[theme.textVariant.header, styles.modalTitle]}>
+            {modalTitle}
+          </Text>
+          <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
+            {modalText}
+          </Text>
         </View>
-      )}
+      </Modal>
       <BackButton />
       <Text style={theme.textVariant.header}>{title}</Text>
       <FlatList

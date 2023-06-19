@@ -17,13 +17,13 @@ function Modal(props) {
     <RNModal transparent visible={props.visible}>
       <TouchableOpacity
         style={styles.background}
-        onPress={() => props.setVisible(false)}
+        onPress={() => props.hideModal()}
       >
         <TouchableWithoutFeedback>
           <View style={styles.modalContainer}>
             <TouchableOpacity
               style={styles.x}
-              onPress={() => props.setVisible(false)}
+              onPress={() => props.hideModal()}
             >
               <Icon
                 name="close"

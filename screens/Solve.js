@@ -6,9 +6,11 @@ import { Input } from "react-native-elements";
 import { useState } from "react";
 import Card from "../common/Card";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
+import Modal from "../common/Modal";
 
 function Solve({ route, navigation }) {
   const { huntAnswer, questions } = route.params;
+  const [showModal, setShowModal] = useState(false);
 
   const [userAnswer, setAnswer] = useState("");
   function onSolve() {
@@ -21,11 +23,9 @@ function Solve({ route, navigation }) {
       // If they match, navigate to the CORRECT screen
       console.log("Correct");
       navigation.navigate("Correct", { userAnswer: userAnswer });
-    } else if (userAnswerLower.length > huntAnswerLower.length) {
-      // Probably make a Modal pop up and say the answer is too long
-      console.log(
-        `Your answer is too long. Should be ${huntAnswerLower.length} characters long. Your answer is ${userAnswerLower} characters long (1 per question).`
-      );
+    } else if (userAnswerLower.length !== huntAnswerLower.length) {
+      // Make a Modal pop up and say the answer the wrong length
+      setShowModal(true);
     } else {
       // If not, navigate to the INCORRECT screen and pass in all the incorrect answers
       let wrongAnswers = [];
@@ -53,6 +53,13 @@ function Solve({ route, navigation }) {
       automaticallyAdjustContentInsets={false}
     >
       <BackButton />
+      <Modal hideModal={() => setShowModal(false)} visible={showModal}>
+        <View style={{ margin: 20 }}>
+          <Text style={theme.textVariant.header}>
+            {`Your answer is the wrong length. It should be ${huntAnswer.length} characters long, but your answer is ${userAnswer.length} characters long. There is 1 character per question.`}
+          </Text>
+        </View>
+      </Modal>
       <Text style={theme.textVariant.header}>Check Your Answer</Text>
       <Text style={[theme.textVariant.regular, styles.explanation]}>
         Submit as an XX character word to see if your answers are all correct!
