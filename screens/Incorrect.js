@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { theme } from "../theme";
 
 function Incorrect({ route, navigation }) {
-  const { userAnswer, wrongAnswers } = route.params;
+  const { userAnswer, questionsWrong } = route.params;
   return (
     <View style={styles.container}>
       <BackButton />
@@ -24,11 +24,13 @@ function Incorrect({ route, navigation }) {
         <Text style={[theme.textVariant.regular, { marginBottom: 10 }]}>
           Your Answer:
         </Text>
-        <Text style={theme.textVariant.regular}>{route.params.userAnswer}</Text>
+        <Text style={theme.textVariant.regular}>{userAnswer}</Text>
       </View>
       <Card highlight style={styles.button}>
         <TouchableOpacity
-          onPress={() => console.log("See wrong answers clicked")}
+          onPress={() =>
+            navigation.navigate("WrongAnswers", { userAnswer, questionsWrong })
+          }
         >
           <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
             See Wrong Answers

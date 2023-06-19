@@ -38,12 +38,11 @@ function Solve({ route, navigation }) {
           wrongAnswers.push(i);
         }
       }
-      console.log(wrongAnswers);
       const questionsWrong = questions.filter((_, index) =>
         wrongAnswers.includes(index)
       );
       console.log(questionsWrong);
-      navigation.navigate("Incorrect", { userAnswer, wrongAnswers });
+      navigation.navigate("Incorrect", { userAnswer, questionsWrong });
     }
   }
 

@@ -9,6 +9,7 @@ import Question from "./screens/Question";
 import Solve from "./screens/Solve";
 import Correct from "./screens/Correct";
 import Incorrect from "./screens/Incorrect";
+import WrongAnswers from "./screens/WrongAnswers";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,7 @@ export default function App() {
         <Stack.Screen name="Solve" component={Solve} />
         <Stack.Screen name="Correct" component={Correct} />
         <Stack.Screen name="Incorrect" component={Incorrect} />
+        <Stack.Screen name="WrongAnswers" component={WrongAnswers} />
       </Stack.Navigator>
     </NavigationContainer>
   );
