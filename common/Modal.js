@@ -3,11 +3,16 @@ import {
   View,
   TouchableWithoutFeedback,
   Modal as RNModal,
+  ScrollView,
+  Dimensions,
+  PixelRatio,
 } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { useState } from "react";
 
 function Modal(props) {
+  const [scrollable, setScrollable] = useState(false);
   return (
     <RNModal transparent visible={props.visible}>
       <TouchableOpacity
@@ -27,7 +32,20 @@ function Modal(props) {
                 size={50}
               />
             </TouchableOpacity>
-            <View>{props.children}</View>
+            <ScrollView
+              scrollEnabled={scrollable}
+              // This function will make the modal scrollable if the children reach the max height (80% - margins)
+              onLayout={(event) => {
+                setScrollable(
+                  event.nativeEvent.layout.height >=
+                    Dimensions.get("window").height * 0.8 - 16 * 2
+                );
+              }}
+            >
+              <TouchableWithoutFeedback>
+                {props.children}
+              </TouchableWithoutFeedback>
+            </ScrollView>
           </View>
         </TouchableWithoutFeedback>
       </TouchableOpacity>
@@ -46,7 +64,7 @@ const styles = EStyleSheet.create({
     width: "90%",
     backgroundColor: "#EAEAEA",
     borderRadius: 25,
-    padding: "1rem",
+    padding: 16,
     maxHeight: "80%",
   },
   x: {
@@ -55,6 +73,7 @@ const styles = EStyleSheet.create({
     right: 0,
     borderRadius: 25,
     overflow: "hidden",
+    zIndex: 1,
   },
 });
 
