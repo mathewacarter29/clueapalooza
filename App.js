@@ -6,6 +6,7 @@ import { useFonts } from "expo-font";
 import Home from "./screens/Home";
 import Hunt from "./screens/Hunt";
 import Question from "./screens/Question";
+import Solve from "./screens/Solve";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Hunt" component={Hunt} />
         <Stack.Screen name="Question" component={Question} />
+        <Stack.Screen name="Solve" component={Solve} />
       </Stack.Navigator>
     </NavigationContainer>
   );

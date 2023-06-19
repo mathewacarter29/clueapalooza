@@ -5,6 +5,7 @@ import { theme } from "../theme";
 import Card from "../common/Card";
 import { useState } from "react";
 import Modal from "../common/Modal";
+import BackButton from "../common/BackButton";
 
 function Question({ route, navigation }) {
   const { title, hints, answer } = route.params;
@@ -61,15 +62,7 @@ function Question({ route, navigation }) {
           </Modal>
         </View>
       )}
-      <View style={styles.backButton}>
-        <Icon
-          name="arrow-left"
-          backgroundColor={"#EAEAEA"}
-          color={"black"}
-          size={50}
-          onPress={() => navigation.goBack()}
-        />
-      </View>
+      <BackButton />
       <Text style={theme.textVariant.header}>{title}</Text>
       <FlatList
         contentContainerStyle={{ marginTop: "10%" }}
@@ -86,8 +79,6 @@ const styles = EStyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.colors.background,
-  },
-  backButton: {
     marginTop: "2rem",
   },
   modalTitle: {

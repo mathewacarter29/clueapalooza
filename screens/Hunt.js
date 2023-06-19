@@ -1,22 +1,14 @@
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { theme } from "../theme";
 import EStyleSheet from "react-native-extended-stylesheet";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Card from "../common/Card";
+import BackButton from "../common/BackButton";
 
 function Hunt({ route, navigation }) {
   const { questions, title } = route.params;
   return (
     <View style={styles.container}>
-      <View>
-        <Icon
-          name="arrow-left"
-          backgroundColor={"#EAEAEA"}
-          color={"black"}
-          size={50}
-          onPress={() => navigation.goBack()}
-        />
-      </View>
+      <BackButton />
       <Text style={[theme.textVariant.header, { textAlign: "center" }]}>
         {title}
       </Text>
@@ -41,7 +33,7 @@ function Hunt({ route, navigation }) {
         }}
       />
       <Card highlight style={styles.button}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Solve")}>
           <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
             Solve Hunt
           </Text>
