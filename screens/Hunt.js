@@ -12,6 +12,9 @@ function Hunt({ route, navigation }) {
       <Text style={[theme.textVariant.header, { textAlign: "center" }]}>
         {title}
       </Text>
+      <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
+        Tap on a question to view hints
+      </Text>
       <FlatList
         data={questions}
         renderItem={({ item }) => {
