@@ -46,16 +46,20 @@ function Question({ route, navigation }) {
   return (
     <View style={styles.container}>
       {showModal && (
-        <Modal setVisible={setShowModal}>
-          <View>
-            <Text style={[theme.textVariant.header, styles.modalTitle]}>
-              {modalTitle}
-            </Text>
-            <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
-              {modalText}
-            </Text>
-          </View>
-        </Modal>
+        <View>
+          <Modal setVisible={setShowModal} visible={showModal}>
+            <View>
+              <Text style={[theme.textVariant.header, styles.modalTitle]}>
+                {modalTitle}
+              </Text>
+              <Text
+                style={[theme.textVariant.regular, { textAlign: "center" }]}
+              >
+                {modalText}
+              </Text>
+            </View>
+          </Modal>
+        </View>
       )}
       <View style={styles.backButton}>
         <Icon

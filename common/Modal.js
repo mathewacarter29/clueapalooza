@@ -1,45 +1,53 @@
-import { TouchableOpacity, View } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  TouchableWithoutFeedback,
+  Modal as RNModal,
+} from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 function Modal(props) {
   return (
-    <TouchableOpacity
-      style={styles.background}
-      onPress={() => props.setVisible(false)}
-    >
-      <TouchableOpacity style={styles.modal} activeOpacity={1}>
-        <View style={styles.x}>
-          <Icon
-            name="close"
-            backgroundColor={"#EAEAEA"}
-            color={"black"}
-            size={50}
-            onPress={() => props.setVisible(false)}
-          />
-        </View>
-        {props.children}
+    <RNModal transparent visible={props.visible}>
+      <TouchableOpacity
+        style={styles.background}
+        onPress={() => props.setVisible(false)}
+      >
+        <TouchableWithoutFeedback>
+          <View style={styles.modalContainer}>
+            <TouchableOpacity
+              style={styles.x}
+              onPress={() => props.setVisible(false)}
+            >
+              <Icon
+                name="close"
+                backgroundColor={"#EAEAEA"}
+                color={"black"}
+                size={50}
+              />
+            </TouchableOpacity>
+            <View>{props.children}</View>
+          </View>
+        </TouchableWithoutFeedback>
       </TouchableOpacity>
-    </TouchableOpacity>
+    </RNModal>
   );
 }
 
 const styles = EStyleSheet.create({
   background: {
-    zIndex: 100,
     backgroundColor: "rgba(192, 192, 192, 0.5)",
-    height: "100%",
-    width: "100%",
-    position: "absolute",
-    top: 0,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  modal: {
-    borderRadius: 25,
-    backgroundColor: "#EAEAEA",
-    padding: "1rem",
+  modalContainer: {
     width: "90%",
+    backgroundColor: "#EAEAEA",
+    borderRadius: 25,
+    padding: "1rem",
+    maxHeight: "80%",
   },
   x: {
     position: "absolute",
@@ -47,7 +55,6 @@ const styles = EStyleSheet.create({
     right: 0,
     borderRadius: 25,
     overflow: "hidden",
-    zIndex: 101,
   },
 });
 
