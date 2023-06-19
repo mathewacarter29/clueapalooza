@@ -29,7 +29,7 @@ function Solve({ navigation }) {
       />
       <Image source={require("../assets/logo_text.png")} style={styles.logo} />
       <Card highlight style={styles.button}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => console.log(answer)}>
           <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
             Solve Hunt
           </Text>
