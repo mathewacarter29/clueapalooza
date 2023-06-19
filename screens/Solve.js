@@ -20,7 +20,7 @@ function Solve({ route, navigation }) {
     if (userAnswerLower === huntAnswerLower) {
       // If they match, navigate to the CORRECT screen
       console.log("Correct");
-      // navigation.navigate("Correct");
+      navigation.navigate("Correct", { userAnswer: userAnswer });
     } else if (userAnswerLower.length > huntAnswerLower.length) {
       // Probably make a Modal pop up and say the answer is too long
       console.log(
@@ -64,13 +64,15 @@ function Solve({ route, navigation }) {
         inputStyle={[theme.textVariant.regular, { textAlign: "center" }]}
       />
       <Image source={require("../assets/logo_text.png")} style={styles.logo} />
-      <Card highlight style={styles.button}>
-        <TouchableOpacity onPress={() => onSolve()}>
-          <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
-            Solve Hunt
-          </Text>
-        </TouchableOpacity>
-      </Card>
+      <View style={{ flex: 1, justifyContent: "flex-end" }}>
+        <Card highlight style={styles.button}>
+          <TouchableOpacity onPress={() => onSolve()}>
+            <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
+              Solve Hunt
+            </Text>
+          </TouchableOpacity>
+        </Card>
+      </View>
     </KeyboardAwareScrollView>
   );
 }
@@ -80,7 +82,6 @@ const styles = EStyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background,
     paddingTop: "2rem",
-    padding: "1rem",
   },
   explanation: {
     textAlign: "center",

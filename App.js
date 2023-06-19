@@ -7,6 +7,7 @@ import Home from "./screens/Home";
 import Hunt from "./screens/Hunt";
 import Question from "./screens/Question";
 import Solve from "./screens/Solve";
+import Correct from "./screens/Correct";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,7 @@ export default function App() {
         <Stack.Screen name="Hunt" component={Hunt} />
         <Stack.Screen name="Question" component={Question} />
         <Stack.Screen name="Solve" component={Solve} />
+        <Stack.Screen name="Correct" component={Correct} />
       </Stack.Navigator>
     </NavigationContainer>
   );
