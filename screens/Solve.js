@@ -43,6 +43,7 @@ function Solve({ route, navigation }) {
         wrongAnswers.includes(index)
       );
       console.log(questionsWrong);
+      navigation.navigate("Incorrect", { userAnswer, wrongAnswers });
     }
   }
 
