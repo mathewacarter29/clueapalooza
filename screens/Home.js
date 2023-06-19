@@ -27,6 +27,7 @@ function Home({ navigation }) {
                   navigation.navigate("Hunt", {
                     questions: item.questions,
                     title: item.title,
+                    answer: item.answer,
                   })
                 }
               >

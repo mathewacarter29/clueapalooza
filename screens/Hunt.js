@@ -5,7 +5,7 @@ import Card from "../common/Card";
 import BackButton from "../common/BackButton";
 
 function Hunt({ route, navigation }) {
-  const { questions, title } = route.params;
+  const { questions, title, answer } = route.params;
   return (
     <View style={styles.container}>
       <BackButton />
@@ -33,7 +33,14 @@ function Hunt({ route, navigation }) {
         }}
       />
       <Card highlight style={styles.button}>
-        <TouchableOpacity onPress={() => navigation.navigate("Solve")}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Solve", {
+              huntAnswer: answer,
+              questions: questions,
+            })
+          }
+        >
           <Text style={[theme.textVariant.regular, { textAlign: "center" }]}>
             Solve Hunt
           </Text>
